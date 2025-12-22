@@ -1,14 +1,13 @@
 ---
+title: 网络路由与交换技术
 cover: /assets/images/cover2.jpg
 icon: pen-to-square
 date: 2025-12-22
 category:
-  - 蔬菜
-tag:
-  - 红
-  - 圆
+  - 网络
 star: true
 sticky: true
+author: superxuan
 ---
 
 # 网络路由与交换技术
