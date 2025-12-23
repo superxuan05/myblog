@@ -7,8 +7,8 @@ export default defineUserConfig({
   base: "/myblog/",
 
   lang: "zh-CN",
-  title: "博客演示",
-  description: "vuepress-theme-hope 的博客演示",
+  title: "superxuan的个人博客",
+  description: "superxuan05的个人博客",
   plugins: [
     markdownMathPlugin({
       type: 'katex',
