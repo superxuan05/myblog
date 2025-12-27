@@ -1,0 +1,28 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4488ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a5fb4;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- 地球轮廓 -->
+  <circle cx="60" cy="60" r="45" fill="url(#logoGradient)" />
+  
+  <!-- 大陆简化形状 -->
+  <path d="M40 40 Q60 35, 80 40 T75 55 Q70 65, 60 70 T45 60 Q35 50, 40 40" fill="#2ecc71" opacity="0.8"/>
+  
+  <!-- 轨道线 -->
+  <ellipse cx="60" cy="60" rx="50" ry="20" fill="none" stroke="#4488ff" stroke-width="1.5" opacity="0.5" transform="rotate(25 60 60)"/>
+  
+  <!-- 卫星点 -->
+  <circle cx="90" cy="55" r="3" fill="#fff" opacity="0.9">
+    <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- 星星装饰 -->
+  <circle cx="25" cy="25" r="2" fill="#fff" opacity="0.8"/>
+  <circle cx="95" cy="20" r="1.5" fill="#fff" opacity="0.6"/>
+  <circle cx="20" cy="90" r="1.5" fill="#fff" opacity="0.7"/>
+  <circle cx="100" cy="85" r="2" fill="#fff" opacity="0.8"/>
+</svg>

@@ -2,43 +2,43 @@
 home: true
 layout: Blog
 icon: house
-title: 博客主页
-heroImage: https://theme-hope-assets.vuejs.press/logo.svg
-heroText: 你博客的名称
+title: 个人博客
+heroImage: /logo.png
+heroText: 探索科技，分享知识
 heroFullScreen: true
-tagline: 你可以在这里放置你的口号与标语
+tagline: 记录学习历程，分享技术心得
 projects:
   - icon: folder-open
-    name: 项目名称
-    desc: 项目详细描述
-    link: https://你的项目链接
+    name: 技术文章
+    desc: 分享前端开发经验与技巧
+    link: https://example.com/articles
 
   - icon: link
-    name: 链接名称
-    desc: 链接详细描述
-    link: https://链接地址
+    name: 开源项目
+    desc: 探索开源世界的无限可能
+    link: https://example.com/projects
 
   - icon: book
-    name: 书籍名称
-    desc: 书籍详细描述
-    link: https://你的书籍链接
+    name: 学习笔记
+    desc: 记录成长路上的点点滴滴
+    link: https://example.com/notes
 
   - icon: newspaper
-    name: 文章名称
-    desc: 文章详细描述
-    link: https://你的文章链接
+    name: 随笔杂谈
+    desc: 分享生活中的思考与感悟
+    link: https://example.com/blog
 
   - icon: user-group
-    name: 伙伴名称
-    desc: 伙伴详细介绍
-    link: https://你的伙伴链接
+    name: 技术交流
+    desc: 与志同道合的朋友一起成长
+    link: https://example.com/community
 
-  - icon: https://theme-hope-assets.vuejs.press/logo.svg
-    name: 自定义项目
-    desc: 自定义详细介绍
-    link: https://你的自定义链接
+  - icon: /logo.svg
+    name: 关于我
+    desc: 了解更多关于我的信息
+    link: https://example.com/about
 
-footer: 自定义你的页脚文字
+footer: © 2023 个人博客. All Rights Reserved.
 ---
 
 这是一个博客主页的案例。

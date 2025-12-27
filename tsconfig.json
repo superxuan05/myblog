@@ -7,7 +7,7 @@
   "include": [
     "src/.vuepress/**/*.ts",
     "src/.vuepress/**/*.vue"
-  ],
+, "src/.vuepress/components/Blog.vue.bak"  ],
   "exclude": [
     "node_modules"
   ]

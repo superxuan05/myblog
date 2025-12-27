@@ -1,17 +1,26 @@
 <script setup lang="ts">
 import { Blog } from "vuepress-theme-hope/blog";
-import BingHeroBackground from "vuepress-theme-hope/presets/BingHeroBackground.js";
 import HitokotoBlogHero from "vuepress-theme-hope/presets/HitokotoBlogHero.js";
-
+import EarthGlobe from "../components/EarthGlobe.vue";
 </script>
 
 <template>
-<Blog>
-    <template #heroBg>
-    <BingHeroBackground />
-    </template>
+  <Blog>
     <template #heroInfo="data">
-    <HitokotoBlogHero v-bind="data" />
+      <!-- 1. 地球底层 -->
+      <EarthGlobe class="hero-earth" />
+      <!-- 2. 原来的标语/背景 -->
+      <BingHeroBackground />
+      <HitokotoBlogHero v-bind="data" />
     </template>
-</Blog>
+  </Blog>
 </template>
+
+<style scoped>
+.hero-earth {
+  position: absolute;
+  inset: 0;
+  z-index: 0;          /* 最底层 */
+  pointer-events: none;
+}
+</style>
