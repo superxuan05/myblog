@@ -1,2 +1,67 @@
-// you can change config here
-$theme-color: #096dd9;
+// 主题颜色配置 - 现代渐变色彩
+$theme-color: #4361ee;
+$theme-color-light: #4cc9f0;
+$theme-color-dark: #3a0ca3;
+
+// 辅助颜色 - 调整文字颜色，使其更清晰
+$text-color: #2c3e50;
+$text-color-light: #5a6c7d;
+$text-color-dark: #1a252f;
+$background-color: #ffffff;
+$background-color-light: #f8f9fa;
+$background-color-dark: #e9ecef;
+
+// 边框颜色
+$border-color: #dee2e6;
+$border-color-light: #f8f9fa;
+$border-color-dark: #adb5bd;
+
+// 强调色
+$accent-color: #f72585;
+$success-color: #4cc9f0;
+$warning-color: #fca311;
+$error-color: #f94144;
+
+// 字体配置 - 更美观的字体
+$font-family: 'Microsoft YaHei', 'PingFang SC', 'Helvetica Neue', Arial, 'Noto Sans SC', sans-serif;
+$font-size-base: 16px;
+$font-size-small: 14px;
+$font-size-large: 18px;
+$font-size-xl: 24px;
+$font-size-xxl: 32px;
+
+// 间距配置
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$spacing-xxl: 48px;
+
+// 边框半径 - 更圆润的边角
+$border-radius-sm: 6px;
+$border-radius-md: 12px;
+$border-radius-lg: 20px;
+$border-radius-full: 50%;
+
+// 阴影 - 更柔和的阴影效果
+$box-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+$box-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+$box-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
+$box-shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+
+// 过渡效果
+$transition-fast: 0.2s ease-out;
+$transition-normal: 0.3s ease-out;
+$transition-slow: 0.5s ease-out;
+
+// 渐变效果
+$gradient-primary: linear-gradient(135deg, $theme-color, $theme-color-light);
+$gradient-accent: linear-gradient(135deg, $accent-color, $warning-color);
+$gradient-success: linear-gradient(135deg, $success-color, #4361ee);
+
+// 断点
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;

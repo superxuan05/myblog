@@ -3,46 +3,57 @@ home: true
 layout: Blog
 icon: house
 title: 个人博客
-heroImage: /logo.png
+heroImage: /banner.svg
 heroText: 探索科技，分享知识
 heroFullScreen: true
 tagline: 记录学习历程，分享技术心得
+background:
+  size: cover
+  position: center
+  repeat: no-repeat
+
 projects:
-  - icon: folder-open
-    name: 技术文章
-    desc: 分享前端开发经验与技巧
-    link: https://example.com/articles
+  - icon: database
+    name: 数据结构
+    desc: 深入学习数据结构与算法
+    link: /posts/数据结构/
 
-  - icon: link
-    name: 开源项目
-    desc: 探索开源世界的无限可能
-    link: https://example.com/projects
+  - icon: microchip
+    name: 计算机组成原理
+    desc: 探索计算机硬件与软件的协同工作
+    link: /posts/计算机组成原理/
 
-  - icon: book
-    name: 学习笔记
-    desc: 记录成长路上的点点滴滴
-    link: https://example.com/notes
+  - icon: server
+    name: 操作系统
+    desc: 理解操作系统的核心原理
+    link: /posts/操作系统/
 
-  - icon: newspaper
-    name: 随笔杂谈
-    desc: 分享生活中的思考与感悟
-    link: https://example.com/blog
+  - icon: network-wired
+    name: 计算机网络
+    desc: 掌握网络通信的基本原理
+    link: /posts/计算机网络/
 
-  - icon: user-group
-    name: 技术交流
-    desc: 与志同道合的朋友一起成长
-    link: https://example.com/community
+  - icon: calculator
+    name: 考研数学
+    desc: 考研数学复习资料与解题技巧
+    link: /posts/考研数学/
 
-  - icon: /logo.svg
+  - icon: user
     name: 关于我
     desc: 了解更多关于我的信息
-    link: https://example.com/about
+    link: /intro.html
 
-footer: © 2023 个人博客. All Rights Reserved.
+footer: © 2026 我的博客. All Rights Reserved.
 ---
 
-这是一个博客主页的案例。
+欢迎来到我的个人博客！
 
-要使用此布局，你应该在页面前端设置 `layout: Blog` 和 `home: true`。
+这里是我记录学习历程、分享技术心得的地方。我专注于计算机科学与技术领域，包括数据结构、计算机组成原理、操作系统、计算机网络等内容。
 
-相关配置文档请见 [博客主页](https://theme-hope.vuejs.press/zh/guide/blog/home.html)。
+通过这个博客，我希望能够：
+- 整理和分享自己的学习笔记
+- 记录解决技术问题的过程
+- 与志同道合的朋友交流学习心得
+- 不断提升自己的技术水平
+
+如果你对我的内容感兴趣，欢迎关注和交流！

@@ -2,24 +2,65 @@
   <Blog>
     <template #heroInfo="data">
       <!-- 头部横幅图片 -->
-      <div class="header-banner">
-        <img src="/banner.svg" alt="Header Banner" class="banner-image" />
-      </div>
+      <transition 
+        :css="false"
+        @before-enter="onBeforeEnterBanner"
+        @enter="onEnterBanner"
+        @leave="onLeaveBanner"
+      >
+        <div v-if="showBanner" class="header-banner">
+          <img src="/banner.svg" alt="Header Banner" class="banner-image" />
+        </div>
+      </transition>
       
       <!-- 全屏背景层：地球 -->
       <div class="globe-box">
         <div class="globe-container">
-          <EarthGlobe />
+          <transition 
+            :css="false"
+            @before-enter="onBeforeEnterGlobe"
+            @enter="onEnterGlobe"
+          >
+            <div v-if="showGlobe">
+              <EarthGlobe />
+            </div>
+          </transition>
         </div>
       </div>
 
       <!-- 前景层：标题 / 标语 -->
       <div class="text-box">
-        <div class="hero-content">
-          <img :src="$frontmatter.heroImage" class="hero-logo" />
-          <h1>{{ $frontmatter.heroText }}</h1>
-          <p class="tagline">{{ $frontmatter.tagline }}</p>
-        </div>
+        <transition-group 
+          :css="false"
+          tag="div" 
+          class="hero-content"
+          @before-enter="onBeforeEnterContent"
+          @enter="onEnterContent"
+        >
+          <img v-if="showLogo" key="logo" :src="$frontmatter.heroImage" class="hero-logo" />
+          <h1 v-if="showTitle" key="title">{{ $frontmatter.heroText }}</h1>
+          <p v-if="showTagline" key="tagline" class="tagline">{{ $frontmatter.tagline }}</p>
+        </transition-group>
+      </div>
+      
+      <!-- 装饰粒子背景 - 使用Vue的内置transition -->
+      <div class="particles-container">
+        <transition-group 
+          name="particles" 
+          tag="div"
+        >
+          <div 
+            v-for="(particle, index) in particles" 
+            :key="`particle-${index}`"
+            class="particle"
+            :style="{
+              left: `${particle.x}%`,
+              top: `${particle.y}%`,
+              width: `${particle.size}px`,
+              height: `${particle.size}px`
+            }"
+          ></div>
+        </transition-group>
       </div>
     </template>
   </Blog>
@@ -29,7 +70,167 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue'
 import CustomCursor from './CustomCursor.vue'
+
+// 控制各个元素的显示状态
+const showBanner = ref(false)
+const showGlobe = ref(false)
+const showLogo = ref(false)
+const showTitle = ref(false)
+const showTagline = ref(false)
+
+// 粒子系统 - 使用Vue的响应式系统
+const particles = ref([])
+
+// 生成随机粒子
+const generateParticles = () => {
+  const count = 30
+  const newParticles = []
+  
+  for (let i = 0; i < count; i++) {
+    newParticles.push({
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 4 + 1,
+      delay: Math.random() * 5,
+      id: i
+    })
+  }
+  
+  particles.value = newParticles
+}
+
+// Vue内置的JavaScript钩子动画 - 横幅
+const onBeforeEnterBanner = (el) => {
+  el.style.opacity = 0
+  el.style.transform = 'translateY(-100%)'
+}
+
+const onEnterBanner = (el, done) => {
+  const duration = 800
+  const startTime = performance.now()
+  
+  const animate = (currentTime) => {
+    const elapsedTime = currentTime - startTime
+    const progress = Math.min(elapsedTime / duration, 1)
+    
+    // 使用Vue的内置缓动函数
+    const easeProgress = easeOutCubic(progress)
+    
+    el.style.opacity = easeProgress
+    el.style.transform = `translateY(${(1 - easeProgress) * -100}%)`
+    
+    if (progress < 1) {
+      requestAnimationFrame(animate)
+    } else {
+      done()
+    }
+  }
+  
+  requestAnimationFrame(animate)
+}
+
+const onLeaveBanner = (el, done) => {
+  el.style.transition = 'all 0.3s ease'
+  el.style.opacity = 0
+  el.style.transform = 'translateY(-100%)'
+  setTimeout(done, 300)
+}
+
+// Vue内置的JavaScript钩子动画 - 地球
+const onBeforeEnterGlobe = (el) => {
+  el.style.opacity = 0
+  el.style.transform = 'scale(0.8)'
+}
+
+const onEnterGlobe = (el, done) => {
+  const duration = 1500
+  const startTime = performance.now()
+  
+  const animate = (currentTime) => {
+    const elapsedTime = currentTime - startTime
+    const progress = Math.min(elapsedTime / duration, 1)
+    
+    const easeProgress = easeOutExpo(progress)
+    
+    el.style.opacity = easeProgress
+    el.style.transform = `scale(${0.8 + easeProgress * 0.2})`
+    
+    if (progress < 1) {
+      requestAnimationFrame(animate)
+    } else {
+      done()
+    }
+  }
+  
+  requestAnimationFrame(animate)
+}
+
+// Vue内置的JavaScript钩子动画 - 内容
+const onBeforeEnterContent = (el) => {
+  el.style.opacity = 0
+  el.style.transform = 'translateY(30px)'
+}
+
+const onEnterContent = (el, done) => {
+  const duration = 600
+  const startTime = performance.now()
+  
+  const animate = (currentTime) => {
+    const elapsedTime = currentTime - startTime
+    const progress = Math.min(elapsedTime / duration, 1)
+    
+    const easeProgress = easeOutCubic(progress)
+    
+    el.style.opacity = easeProgress
+    el.style.transform = `translateY(${(1 - easeProgress) * 30}px)`
+    
+    if (progress < 1) {
+      requestAnimationFrame(animate)
+    } else {
+      done()
+    }
+  }
+  
+  requestAnimationFrame(animate)
+}
+
+// Vue内置的缓动函数
+const easeOutCubic = (t) => {
+  return 1 - Math.pow(1 - t, 3)
+}
+
+const easeOutExpo = (t) => {
+  return t === 1 ? 1 : 1 - Math.pow(-2, 10 * t - 10)
+}
+
+// 页面加载后的动画序列
+onMounted(() => {
+  // 生成粒子
+  generateParticles()
+  
+  // 使用Vue的nextTick确保DOM更新
+  setTimeout(() => {
+    showBanner.value = true
+  }, 100)
+  
+  setTimeout(() => {
+    showGlobe.value = true
+  }, 700)
+  
+  setTimeout(() => {
+    showLogo.value = true
+  }, 1400)
+  
+  setTimeout(() => {
+    showTitle.value = true
+  }, 1700)
+  
+  setTimeout(() => {
+    showTagline.value = true
+  }, 2000)
+})
 </script>
 
 <style scoped>
@@ -126,6 +327,89 @@ h1 {
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.5;
+}
+
+/* 粒子背景 */
+.particles-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(68, 136, 255, 0.8);
+  animation: float 10s infinite ease-in-out;
+}
+
+/* Vue内置的transition-group粒子动画 */
+.particles-enter-active {
+  transition: all 0.8s ease-out;
+}
+
+.particles-leave-active {
+  transition: all 0.5s ease-in;
+}
+
+.particles-enter-from {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.particles-leave-to {
+  opacity: 0;
+  transform: scale(2);
+}
+
+.particles-move {
+  transition: transform 0.5s ease-out;
+}
+
+/* 粒子动画 */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  50% {
+    transform: translateY(-40px) translateX(-10px);
+  }
+  75% {
+    transform: translateY(-20px) translateX(5px);
+  }
+}
+
+/* Logo特殊动画 */
+.hero-logo {
+  animation: pulse 2s infinite alternate, glow 3s infinite alternate;
+  transform-origin: center;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.8), 0 0 60px rgba(68, 136, 255, 0.6);
+  }
+}
+
+@keyframes glow {
+  0% {
+    filter: brightness(1);
+  }
+  100% {
+    filter: brightness(1.2);
+  }
 }
 
 /* 响应式设计 */

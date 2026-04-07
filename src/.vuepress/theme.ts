@@ -1,19 +1,19 @@
 import { hopeTheme } from "vuepress-theme-hope";
 
-import navbar from "./navbar.js";
-import sidebar from "./sidebar.js";
+import navbar from "./navbar";
+import sidebar from "./sidebar";
 
 export default hopeTheme({
-  hostname: "https://mister-hope.github.io",
+  hostname: "https://superxuan05.github.io",
 
   author: {
     name: "superxuan",
     url: "https://superxuan05.github.io",
   },
 
-  logo: "https://i.bobopic.com/tx_bobopic/89013784_bobopic.jpg",
+  logo: "/logo.svg",
 
-  repo: "vuepress-theme-hope/vuepress-theme-hope",
+  repo: "superxuan05/myblog",
 
   docsDir: "src",
 
@@ -24,12 +24,13 @@ export default hopeTheme({
   sidebar,
 
   // 页脚
-  footer: "默认页脚",
+  footer: "探索科技 · 分享知识",
   displayFooter: true,
+  copyright: "© 2026 superxuan. All rights reserved.",
 
   // 博客相关
   blog: {
-    description: "superxuan05的个人博客",
+    description: "superxuan05的个人博客，分享技术、生活和思考",
     intro: "/intro.html",
     medias: {
       BiliBili: "https://space.bilibili.com/396245561",
@@ -37,14 +38,20 @@ export default hopeTheme({
       Github: "https://github.com/superxuan05",
       QQ: "2758157702",
     },
-  },
-
-  // 加密配置
-  encrypt: {
-    config: {
-      "/demo/encrypt.html": {
-        hint: "Password: 1234",
-        password: "1234",
+    avatar: "/logo.png",
+    roundAvatar: true,
+    article: {
+      // 文章摘要
+      excerpt: true,
+      excerptLength: 150,
+      readMore: "阅读更多...",
+      // 文章信息
+      wordCount: true,
+      readingTime: true,
+      // 文章版权
+      copyright: {
+        license: "CC BY-NC-SA 4.0",
+        message: "本文章采用 CC BY-NC-SA 4.0 许可协议",
       },
     },
   },
@@ -54,155 +61,60 @@ export default hopeTheme({
     editLink: "在 GitHub 上编辑此页",
   },
   fullscreen: true,
-  // 如果想要实时查看任何改变，启用它。注: 这对更新性能有很大负面影响
-  // hotReload: true,
+  darkmode: "auto",
+  themeColor: {
+    blue: "#2196f3",
+    red: "#f26d6d",
+    green: "#3eaf7c",
+    orange: "#fb9b5f",
+  },
 
-  // 此处开启了很多功能用于演示，你应仅保留用到的功能。
+  // 增强markdown功能
   markdown: {
+    // 基础功能
+    gfm: true,
+    imgLazyload: true,
+    tasklist: true,
+    // 增强功能
     align: true,
     attrs: true,
     codeTabs: true,
     component: true,
-    demo: true,
     figure: true,
-    gfm: true,
-    imgLazyload: true,
     imgSize: true,
     include: true,
     mark: true,
-    plantuml: true,
-    spoiler: true,
-    stylize: [
-      {
-        matcher: "Recommended",
-        replacer: ({ tag }) => {
-          if (tag === "em")
-            return {
-              tag: "Badge",
-              attrs: { type: "tip" },
-              content: "Recommended",
-            };
-        },
-      },
-    ],
     sub: true,
     sup: true,
     tabs: true,
-    tasklist: true,
     vPre: true,
-
-    // 取消注释它们如果你需要 TeX 支持
-    // math: {
-    //   // 启用前安装 katex
-    //   type: "katex",
-    //   // 或者安装 @mathjax/src
-    //   type: "mathjax",
-    // },
-
-    // 如果你需要幻灯片，安装 @vuepress/plugin-revealjs 并取消下方注释
-    // revealjs: {
-    //   plugins: ["highlight", "math", "search", "notes", "zoom"],
-    // },
-
-    // 在启用之前安装 chart.js
-    // chartjs: true,
-
-    // insert component easily
-
-    // 在启用之前安装 echarts
-    // echarts: true,
-
-    // 在启用之前安装 flowchart.ts
-    // flowchart: true,
-
-    // 在启用之前安装 mermaid
-    // mermaid: true,
-
-    // playground: {
-    //   presets: ["ts", "vue"],
-    // },
-
-    // 在启用之前安装 @vue/repl
-    // vuePlayground: true,
-
-    // 在启用之前安装 sandpack-vue3
-    // sandpack: true,
   },
 
-  // 在这里配置主题提供的插件
+  // 基础插件
   plugins: {
     blog: true,
 
-    // 启用之前需安装 @waline/client
-    // 警告: 这是一个仅供演示的测试服务，在生产环境中请自行部署并使用自己的服务！
-    // comment: {
-    //   provider: "Waline",
-    //   serverURL: "https://waline-comment.vuejs.press",
-    // },
+    // 启用图片查看器
+    photoSwipe: true,
 
-    components: {
-      components: ["Badge", "VPCard"],
+    // 启用代码复制功能
+    copyCode: {
+      showInMobile: true,
+      duration: 2000,
+      tooltipText: "复制成功！",
     },
 
-    icon: {
-      prefix: "fa6-solid:",
+    // 启用评论系统
+    comment: {
+      provider: "Twikoo",
+      envId: "https://twikoo.cc",
+      options: {
+        lang: "zh-CN",
+        dark: "auto",
+        placeholder: "写下你的评论...",
+        avatar: "mp",
+        theme: "auto",
+      },
     },
-
-    // 如果你需要 PWA。安装 @vuepress/plugin-pwa 并取消下方注释
-    // pwa: {
-    //   favicon: "/favicon.ico",
-    //   cacheHTML: true,
-    //   cacheImage: true,
-    //   appendBase: true,
-    //   apple: {
-    //     icon: "/assets/icon/apple-icon-152.png",
-    //     statusBarColor: "black",
-    //   },
-    //   msTile: {
-    //     image: "/assets/icon/ms-icon-144.png",
-    //     color: "#ffffff",
-    //   },
-    //   manifest: {
-    //     icons: [
-    //       {
-    //         src: "/assets/icon/chrome-mask-512.png",
-    //         sizes: "512x512",
-    //         purpose: "maskable",
-    //         type: "image/png",
-    //       },
-    //       {
-    //         src: "/assets/icon/chrome-mask-192.png",
-    //         sizes: "192x192",
-    //         purpose: "maskable",
-    //         type: "image/png",
-    //       },
-    //       {
-    //         src: "/assets/icon/chrome-512.png",
-    //         sizes: "512x512",
-    //         type: "image/png",
-    //       },
-    //       {
-    //         src: "/assets/icon/chrome-192.png",
-    //         sizes: "192x192",
-    //         type: "image/png",
-    //       },
-    //     ],
-    //     shortcuts: [
-    //       {
-    //         name: "Demo",
-    //         short_name: "Demo",
-    //         url: "/demo/",
-    //         icons: [
-    //           {
-    //             src: "/assets/icon/guide-maskable.png",
-    //             sizes: "192x192",
-    //             purpose: "maskable",
-    //             type: "image/png",
-    //           },
-    //         ],
-    //       },
-    //     ],
-    //   },
-    // },
   },
 });
