@@ -24,6 +24,7 @@
     "vuepress-theme-hope": "2.0.0-rc.99"
   },
   "dependencies": {
+    "aplayer": "^1.10.1",
     "live2d-widget": "^3.1.4",
     "three": "^0.182.0"
   }
