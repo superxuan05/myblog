@@ -15,7 +15,6 @@
     "@vuepress/bundler-vite": "2.0.0-rc.26",
     "@vuepress/plugin-baidu-analytics": "^2.0.0-rc.121",
     "@vuepress/plugin-markdown-math": "^2.0.0-rc.121",
-
     "@vuepress/plugin-shiki": "^2.0.0-rc.121",
     "katex": "^0.16.27",
     "sass-embedded": "^1.93.3",
@@ -25,6 +24,7 @@
     "vuepress-theme-hope": "2.0.0-rc.99"
   },
   "dependencies": {
+    "live2d-widget": "^3.1.4",
     "three": "^0.182.0"
   }
 }
